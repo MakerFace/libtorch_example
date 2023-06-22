@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.18 FATAL_ERROR)
 project(example-app)
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 set(CUDA_TOOLKIT_ROOT_DIR "3rdParty/cuda-10.1" CACHE PATH "Path to CUDA installed location.")
 set(ENV{LD_LIBRARY_PATH} "3rdParty/cuda-10.1/lib64")
 
