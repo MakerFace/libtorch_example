@@ -5,7 +5,8 @@
 #include "resnet101_impl.h"
 
 /**
- * failure [enforce fail at inline_container.cc:222] . file not found: archive/constants.pkl
+ * failure [enforce fail at inline_container.cc:222] . file not found:
+ * archive/constants.pkl
  */
 
 int main(int argc, const char* argv[]) {
@@ -14,12 +15,12 @@ int main(int argc, const char* argv[]) {
     return -1;
   }
 
-  ResNet101 model;
+  ResNet101 model(ResNet101Options({3, 4, 23, 3}, 3).num_channels(3));
   try {
     // Deserialize the ScriptModule from a file using torch::jit::load().
     std::cout << "use torch::load loading model" << std::endl;
-    torch::load(argv[1]);
     torch::load(model, argv[1]);
+    // torch::load(model, argv[1]);
   } catch (const c10::Error& e) {
     std::cerr << "error loading the model\n";
     std::cerr << e.msg() << std::endl;
