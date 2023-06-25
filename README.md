@@ -30,6 +30,8 @@ cmake --build build
 ```
 
 ## References
+[get old version of libtorch](https://github.com/pytorch/pytorch/issues/40961)
+
 [How To Run a pre-trained PyTorch model in C++](https://jumpml.com/howto-pytorch-c++/output/)
 
 [libtorch（pytorch c++）教程（六）](https://zhuanlan.zhihu.com/p/369930932)
