@@ -6,7 +6,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CUDA_TOOLKIT_ROOT_DIR "3rdParty/cuda-10.1" CACHE PATH "Path to CUDA installed location.")
 set(ENV{LD_LIBRARY_PATH} "3rdParty/cuda-10.1/lib64")
 
-set(Torch_DIR "3rdParty/libtorch_1.7.1_cu101/share/cmake/Torch")
+set(Torch_DIR "3rdParty/libtorch-1.7.1+cu101/share/cmake/Torch")
 
 find_package(PythonInterp REQUIRED)
 find_package(Torch REQUIRED 1.7.1)

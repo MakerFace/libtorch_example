@@ -137,4 +137,4 @@ def ResNet152(num_classes, channels=3):
 resnet101 = ResNet101(3)
 
 m = torch.jit.script(resnet101)
-m.save("models/resnet101.pt")
+m.save("models/resnet101-jit.pt")
