@@ -10,7 +10,7 @@
 #include <torch/torch.h>
 #include <string>
 #include <vector>
-#include "block.h"
+#include "bottleneck.h"
 #include "conv_options.h"
 
 ResNet101Options::ResNet101Options(std::vector<int> layers, int num_classes)
@@ -33,13 +33,13 @@ torch::nn::Sequential ResNet101Impl::_make_layer(int64_t planes, int64_t blocks,
         torch::nn::BatchNorm2d(planes * options.expansion()));
   }
   torch::nn::Sequential layers;
-  // TODO 用ResBlock替换Block，提供可供选择的Bottleneck
-  layers->push_back(Block(options.inplanes(), planes, stride, downsample,
+  // TODO 用ResBottleneck替换Bottleneck，提供可供选择的Bottleneck
+  layers->push_back(Bottleneck(options.inplanes(), planes, stride, downsample,
                           options.groups(), options.base_width(),
                           options.is_basic()));
   options.inplanes() = planes * options.expansion();
   for (int64_t i = 1; i < blocks; i++) {
-    layers->push_back(Block(options.inplanes(), planes, 1,
+    layers->push_back(Bottleneck(options.inplanes(), planes, 1,
                             torch::nn::Sequential(), options.groups(),
                             options.base_width(), options.is_basic()));
   }

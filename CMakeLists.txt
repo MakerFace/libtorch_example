@@ -31,7 +31,7 @@ add_executable(load-model-jit src/load-model-jit.cpp)
 target_link_libraries(load-model-jit ${TORCH_LIBRARIES})
 set_property(TARGET load-model-jit PROPERTY CXX_STANDARD 17)
 
-add_executable(load-model src/load-model.cpp src/resnet101_impl.cpp src/block.cpp)
+add_executable(load-model src/load-model.cpp src/resnet101_impl.cpp src/bottleneck.cpp)
 target_link_libraries(load-model ${TORCH_LIBRARIES})
 target_include_directories(load-model PRIVATE "include")
 set_property(TARGET load-model PROPERTY CXX_STANDARD 17)

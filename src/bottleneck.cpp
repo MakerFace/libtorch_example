@@ -1,8 +1,8 @@
-#include "block.h"
+#include "bottleneck.h"
 #include <torch/torch.h>
 #include "conv_options.h"
 
-BlockImpl::BlockImpl(int64_t inplanes, int64_t planes, int64_t stride_,
+BottleneckImpl::BottleneckImpl(int64_t inplanes, int64_t planes, int64_t stride_,
                      torch::nn::Sequential downsample_, int groups,
                      int base_width, bool _is_basic) {
   downsample = downsample_;
@@ -38,7 +38,7 @@ BlockImpl::BlockImpl(int64_t inplanes, int64_t planes, int64_t stride_,
   }
 }
 
-torch::Tensor BlockImpl::forward(torch::Tensor x) {
+torch::Tensor BottleneckImpl::forward(torch::Tensor x) {
   torch::Tensor residual = x.clone();
 
   x = conv1->forward(x);
